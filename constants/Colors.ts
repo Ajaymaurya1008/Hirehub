@@ -24,4 +24,5 @@ export const Colors = {
     tabIconSelected: tintColorDark,
   },
   PRIMARY: "#7F57F1",
+  // background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
 };
