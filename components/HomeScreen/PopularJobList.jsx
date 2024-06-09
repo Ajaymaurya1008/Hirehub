@@ -1,28 +1,30 @@
-import { View, Text } from "react-native";
-import React, { useEffect, useState } from "react";
+import { View, Text, FlatList, Image } from "react-native";
 import { Colors } from "../../constants/Colors";
-import { collection, getDocs, query } from "firebase/firestore";
+import { useState, useEffect } from "react";
+import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
-import { FlatList } from "react-native";
-import CategoryList from "./CategoryList";
+import JobCard from "./JobCard";
 
-export default function Category() {
-  const [category, setCategory] = useState([]);
+export default function PopularJobList() {
+  const [jobs, setJobs] = useState([]);
 
-  const getCategory = async () => {
-    const q = query(collection(db, "Category"));
+  const getJObs = async () => {
+    const q = query(collection(db, "Jobs"));
     const querySnapshot = await getDocs(q);
     const list = querySnapshot.docs.map((doc) => doc.data());
-    setCategory(list);
-    // console.log(category);
+    setJobs(list);
   };
 
   useEffect(() => {
-    getCategory();
+    getJObs();
   }, []);
 
   return (
-    <View>
+    <View
+      style={{
+        marginBottom: 20,
+      }}
+    >
       <View
         style={{
           display: "flex",
@@ -39,7 +41,7 @@ export default function Category() {
             fontFamily: "poppins-bold",
           }}
         >
-          Category
+          Popular Jobs
         </Text>
         <Text
           style={{
@@ -51,13 +53,13 @@ export default function Category() {
         </Text>
       </View>
       <FlatList
-        data={category}
+        data={jobs}
         horizontal={true}
         style={{
           marginLeft: 20,
         }}
         renderItem={({ item, index }) => (
-          <CategoryList item={item} index={index} />
+            <JobCard key={index} item={item} index={index} />
         )}
       />
     </View>
