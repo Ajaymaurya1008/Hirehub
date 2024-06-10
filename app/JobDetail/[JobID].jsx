@@ -1,9 +1,16 @@
-import { View, Text, Image, ScrollView, TouchableOpacity, Linking } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Linking,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
-import JobChip from "../../components/JobList/JobChip";
+import JobChip from "../../components/Common/JobChip";
 
 export default function JobsDetail() {
   const [jobDetail, setJobDetail] = useState({});
@@ -15,11 +22,9 @@ export default function JobsDetail() {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const list = docSnap.data();
-      console.log("first", list);
       setJobDetail(list);
-      console.log(docSnap.data());
     }
-    console.log("ss", jobDetail);
+    // console.log("ss", jobDetail);
   };
 
   useEffect(() => {
@@ -83,9 +88,9 @@ export default function JobsDetail() {
             alignItems: "center",
           }}
         >
-          <JobChip data={jobDetail.Location} />
-          <JobChip data={jobDetail.Type} />
-          <JobChip data={jobDetail.JobPublisher} />
+          <JobChip data={jobDetail.Location || "Unknown"} />
+          <JobChip data={jobDetail.Type || "Fulltime"} />
+          <JobChip data={jobDetail.JobPublisher || "Website"} />
         </View>
       </View>
       <Text

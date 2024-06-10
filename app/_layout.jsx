@@ -31,47 +31,6 @@ export default function RootLayout() {
   });
 
 
-
-  const exportData = async () => {
-    try {
-      const docRef = await addDoc(collection(db, "Jobs"), data);
-      console.log(docRef);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-
-  const fetchData = async () => {
-    const url = "https://jsearch.p.rapidapi.com/search";
-    const params = new URLSearchParams({
-      query: "Frontend Developer",
-      page: "1",
-      num_pages: "1",
-      date_posted: "all",
-    });
-
-    const options = {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": process.env.JOB_SEARCH_API,
-        "x-rapidapi-host": "jsearch.p.rapidapi.com",
-      },
-    };
-
-    try {
-      console.log(process.env.JOB_SEARCH_API)
-      const response = await fetch(`${url}?${params.toString()}`, options);
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-
-
-
   return (
     <ClerkProvider
       publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}

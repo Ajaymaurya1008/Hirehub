@@ -6,7 +6,7 @@ import { db } from "../../configs/FirebaseConfig";
 import { FlatList } from "react-native";
 import CategoryList from "./CategoryList";
 
-export default function Category() {
+export default function Category({textData}) {
   const [category, setCategory] = useState([]);
 
   const getCategory = async () => {
@@ -14,7 +14,6 @@ export default function Category() {
     const querySnapshot = await getDocs(q);
     const list = querySnapshot.docs.map((doc) => doc.data());
     setCategory(list);
-    // console.log(category);
   };
 
   useEffect(() => {
@@ -23,33 +22,35 @@ export default function Category() {
 
   return (
     <View>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginTop: 10,
-          padding: 20,
-        }}
-      >
-        <Text
+      {textData && (
+        <View
           style={{
-            fontSize: 20,
-            fontFamily: "poppins-bold",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: 10,
+            padding: 20,
           }}
         >
-          Category
-        </Text>
-        <Text
-          style={{
-            color: Colors.PRIMARY,
-            fontFamily: "poppins-med",
-          }}
-        >
-          View All
-        </Text>
-      </View>
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: "poppins-bold",
+            }}
+          >
+            Category
+          </Text>
+          <Text
+            style={{
+              color: Colors.PRIMARY,
+              fontFamily: "poppins-med",
+            }}
+          >
+            View All
+          </Text>
+        </View>
+      )}
       <FlatList
         data={category}
         horizontal={true}

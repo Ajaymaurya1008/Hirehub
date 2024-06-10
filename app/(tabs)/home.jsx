@@ -6,8 +6,11 @@ import Category from "../../components/HomeScreen/Category";
 import PopularJobList from "../../components/HomeScreen/PopularJobList";
 import { collection, getDocs, addDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
+import { useUser } from "@clerk/clerk-expo";
 
 export default function home() {
+  const { user } = useUser();
+
   const fetchData = async () => {
     const url = "https://jsearch.p.rapidapi.com/search";
     const params = new URLSearchParams({
@@ -61,16 +64,18 @@ export default function home() {
     <ScrollView>
       {/* Header */}
       <Header />
-      <Text
-        onPress={fetchData}
-        style={{
-          backgroundColor: "#000",
-          color: "#fff",
-          width: 50,
-        }}
-      >
-        hello
-      </Text>
+      {/* {user.emailAddresses == "ajaykvmaurya@gmail.com" && (
+        <Text
+          onPress={fetchData}
+          style={{
+            backgroundColor: "#000",
+            color: "#fff",
+            width: 50,
+          }}
+        >
+          hello
+        </Text>
+      )} */}
 
       {/* Slider */}
 
@@ -78,7 +83,7 @@ export default function home() {
 
       {/* Category  */}
 
-      <Category />
+      <Category textData={true} />
 
       {/* Top Jobs  */}
 

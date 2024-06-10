@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { Colors } from "../../constants/Colors";
 import { useState, useEffect } from "react";
 import { collection, query, getDocs } from "firebase/firestore";
@@ -11,7 +11,10 @@ export default function PopularJobList() {
   const getJObs = async () => {
     const q = query(collection(db, "Jobs"));
     const querySnapshot = await getDocs(q);
-    const list = querySnapshot.docs.map((doc) => doc.data());
+    const list = querySnapshot.docs.map((doc) => ({
+      JobID: doc?.id,
+      ...doc.data(),
+    }));
     setJobs(list);
   };
 
@@ -31,7 +34,6 @@ export default function PopularJobList() {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          marginTop: 10,
           padding: 20,
         }}
       >
@@ -53,13 +55,14 @@ export default function PopularJobList() {
         </Text>
       </View>
       <FlatList
-        data={jobs}
+        data={jobs.slice(0, 5)}
         horizontal={true}
+        ItemSeparatorComponent={() => <View style={{ width: 15 }} />}
         style={{
-          marginLeft: 20,
+          paddingHorizontal: 20,
         }}
         renderItem={({ item, index }) => (
-            <JobCard key={index} item={item} index={index} />
+          <JobCard key={index} item={item} index={index} />
         )}
       />
     </View>

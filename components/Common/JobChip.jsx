@@ -2,6 +2,11 @@ import { View, Text } from 'react-native'
 import React from 'react'
 
 export default function JobChip({data}) {
+
+    const getFirstWord = (text) => {
+      return text.split(" ").slice(0, 1).join("");
+    };
+
   return (
     <Text
       style={{
@@ -13,7 +18,7 @@ export default function JobChip({data}) {
         fontFamily: "poppins",
       }}
     >
-      {data}
+      {getFirstWord(data)}
     </Text>
   );
 }

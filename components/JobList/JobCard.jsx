@@ -1,20 +1,24 @@
-import { View, Text, Image,TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { Colors } from "../../constants/Colors";
 import { useRouter } from "expo-router";
+import JobChip from "../Common/JobChip";
 
 export default function JobCard({ item, index }) {
+  const router = useRouter();
 
-  const router = useRouter()
+  const getFirstWord = (text) => {
+    return text.split(" ").slice(0, 1).join("");
+  };
 
   return (
     <TouchableOpacity
-      onPress={()=>router.push(`JobDetail/${item.JobID}`)}
+      onPress={() => router.push(`JobDetail/${item.JobID}`)}
       style={{
         display: "flex",
         flexDirection: "column",
         gap: 15,
-        marginBottom:15,
+        marginBottom: 15,
         paddingHorizontal: 20,
         paddingVertical: 10,
         width: "auto",
@@ -22,6 +26,8 @@ export default function JobCard({ item, index }) {
         borderRadius: 10,
         backgroundColor: "#fff",
         paddingBottom: 20,
+        cursor: "pointer",
+        // padding:100
       }}
     >
       <View
@@ -51,6 +57,8 @@ export default function JobCard({ item, index }) {
             {item.Company}
           </Text>
           <Text
+            numberOfLines={1}
+            ellipsizeMode="tail"
             style={{
               color: Colors.PRIMARY,
               fontSize: 16,
@@ -70,42 +78,9 @@ export default function JobCard({ item, index }) {
           alignItems: "center",
         }}
       >
-        <Text
-          style={{
-            fontSize: 12,
-            paddingHorizontal: 10,
-            paddingVertical: 2,
-            borderRadius: 5,
-            backgroundColor: "#f3f0f0",
-            fontFamily: "poppins",
-          }}
-        >
-          {item.Location}
-        </Text>
-        <Text
-          style={{
-            fontSize: 12,
-            paddingHorizontal: 10,
-            paddingVertical: 2,
-            borderRadius: 5,
-            backgroundColor: "#f3f0f0",
-            fontFamily: "poppins",
-          }}
-        >
-          {item.Type}
-        </Text>
-        <Text
-          style={{
-            fontSize: 12,
-            paddingHorizontal: 10,
-            paddingVertical: 2,
-            borderRadius: 5,
-            backgroundColor: "#f3f0f0",
-            fontFamily: "poppins",
-          }}
-        >
-          {item.JobPublisher}
-        </Text>
+        <JobChip data={item.Location || "Unknown"} />
+        <JobChip data={item.Type || "Fulltime"} />
+        <JobChip data={item.JobPublisher || "Website"} />
       </View>
     </TouchableOpacity>
   );
