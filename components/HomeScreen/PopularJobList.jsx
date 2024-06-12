@@ -57,6 +57,7 @@ export default function PopularJobList() {
       <FlatList
         data={jobs.slice(0, 5)}
         horizontal={true}
+        showsHorizontalScrollIndicator={false}
         ItemSeparatorComponent={() => <View style={{ width: 15 }} />}
         style={{
           paddingHorizontal: 20,

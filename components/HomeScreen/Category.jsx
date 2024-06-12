@@ -54,6 +54,7 @@ export default function Category({textData}) {
       <FlatList
         data={category}
         horizontal={true}
+        showsHorizontalScrollIndicator={false}
         style={{
           marginLeft: 20,
         }}
