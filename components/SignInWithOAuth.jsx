@@ -1,14 +1,12 @@
 import React from "react";
 import * as WebBrowser from "expo-web-browser";
-import { Button, Text } from "react-native";
+import { Text } from "react-native";
 import { useOAuth } from "@clerk/clerk-expo";
 import { useWarmUpBrowser } from "../hooks/useWarmUpBrowser";
 
 WebBrowser.maybeCompleteAuthSession();
 
 const SignInWithOAuth = () => {
-  // Warm up the android browser to improve UX
-  // https://docs.expo.dev/guides/authentication/#improving-user-experience
   useWarmUpBrowser();
 
   const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
@@ -20,8 +18,6 @@ const SignInWithOAuth = () => {
 
       if (createdSessionId) {
         setActive({ session: createdSessionId });
-      } else {
-        // Use signIn or signUp for next steps such as MFA
       }
     } catch (err) {
       console.error("OAuth error", err);
