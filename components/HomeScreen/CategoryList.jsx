@@ -37,7 +37,7 @@ export default function CategoryList({ item, index }) {
                 height: 40,
                 width: 40,
               }}
-              source={{ uri: item.icon }}
+              source={{ uri: item.icon || "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg" }}
             />
           </View>
           <Text

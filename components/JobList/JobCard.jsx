@@ -6,9 +6,10 @@ import JobChip from "../Common/JobChip";
 
 export default function JobCard({ item, index }) {
   const router = useRouter();
+  // console.log(item.JobId);
 
-  const getFirstWord = (text) => {
-    return text.split(" ").slice(0, 1).join("");
+  const getFirstTwoWords = (text) => {
+    return text.split(" ").slice(0, 2).join("");
   };
 
   return (
@@ -27,7 +28,6 @@ export default function JobCard({ item, index }) {
         backgroundColor: "#fff",
         paddingBottom: 20,
         cursor: "pointer",
-        // padding:100
       }}
     >
       <View
@@ -38,13 +38,19 @@ export default function JobCard({ item, index }) {
           gap: 10,
         }}
       >
-        <Image source={{ uri: item.Logo }} style={{ width: 50, height: 50 }} />
+        <Image
+          source={{
+            uri:
+              item.Logo ||
+              "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg",
+          }}
+          style={{ width: 50, height: 50 }}
+        />
         <View
           style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            // alignItems: "center",
           }}
         >
           <Text
@@ -66,7 +72,7 @@ export default function JobCard({ item, index }) {
               fontFamily: "poppins-med",
             }}
           >
-            {item.Role}
+            {getFirstTwoWords(item.Role)}
           </Text>
         </View>
       </View>

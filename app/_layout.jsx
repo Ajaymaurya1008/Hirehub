@@ -2,9 +2,8 @@ import { SignedIn, SignedOut } from "@clerk/clerk-expo";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { ClerkProvider } from "@clerk/clerk-expo";
-import SignInWithOAuth from "@/components/SignInWithOAuth";
+import Login from "./login";
 import * as SecureStore from "expo-secure-store";
-
 
 const tokenCache = {
   async getToken(key) {
@@ -24,12 +23,11 @@ const tokenCache = {
 };
 
 export default function RootLayout() {
-  useFonts({
+  const [fontsLoaded] = useFonts({
     poppins: require("../assets/fonts/Poppins-Regular.ttf"),
     "poppins-med": require("../assets/fonts/Poppins-Medium.ttf"),
     "poppins-bold": require("../assets/fonts/Poppins-Bold.ttf"),
   });
-
 
   return (
     <ClerkProvider
@@ -42,7 +40,7 @@ export default function RootLayout() {
         </Stack>
       </SignedIn>
       <SignedOut>
-        <SignInWithOAuth />
+        <Login />
       </SignedOut>
     </ClerkProvider>
   );

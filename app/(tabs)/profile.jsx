@@ -3,11 +3,12 @@ import React from "react";
 import { useClerk, useUser } from "@clerk/clerk-expo";
 
 export default function profile() {
-  const { user } = useUser();
+  // const { user } = useUser();
   const { signOut } = useClerk();
 
   const handeleLogOut = async () => {
     await signOut();
+    console.log("Sign Out");
   };
 
   const handleShare = async () => {
@@ -41,15 +42,19 @@ export default function profile() {
         }}
       >
         <Image
-          source={{ uri: user.imageUrl }}
+          source={{
+            uri:
+              // user.imageUrl ||
+              "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg",
+          }}
           style={{
             width: 60,
             height: 60,
             borderRadius: 99,
           }}
         />
-        <Text>{user.fullName}</Text>
-        <Text>{user.primaryEmailAddress.emailAddress}</Text>
+        <Text>{ "Ajay Maurya"}</Text>
+        <Text>{"ajmaurya@gmail.com"}</Text>
       </View>
       <View
         style={{

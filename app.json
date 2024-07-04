@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ajaymaurya1008.hirehub"
     },
     "android": {
       "adaptiveIcon": {
@@ -28,7 +29,8 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true
@@ -38,7 +40,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "9f4be3e4-a515-48b6-9428-9dfd07abcccd"
+        "projectId": "9d0bb2fd-10e1-4ba9-a865-2ffd0fbe0bf8"
       }
     },
     "owner": "ajaymaurya1008"

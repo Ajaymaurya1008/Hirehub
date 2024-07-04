@@ -24,7 +24,7 @@ export default function JobsDetail() {
       const list = docSnap.data();
       setJobDetail(list);
     }
-    // console.log("ss", jobDetail);
+    console.log("ss", jobDetail);
   };
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function JobsDetail() {
         }}
       >
         <Image
-          source={{ uri: jobDetail.Logo }}
+          source={{ uri: jobDetail.Logo || "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg" }}
           style={{
             width: 100,
             height: 100,

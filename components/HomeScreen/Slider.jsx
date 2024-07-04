@@ -51,7 +51,7 @@ export default function Slider() {
               marginRight: 15,
               borderRadius: 15,
             }}
-            source={{ uri: item.imageUrl }}
+            source={{ uri: item.imageUrl || "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg" }}
           />
         )}
       />

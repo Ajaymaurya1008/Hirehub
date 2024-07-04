@@ -37,7 +37,7 @@ export default function JobCard({ item, index }) {
         }}
       >
         <Image
-          source={{ uri: item.Logo }}
+          source={{ uri: item.Logo || "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg" }}
           style={{ width: 50, height: 50, borderRadius: 10 }}
         />
         <View
