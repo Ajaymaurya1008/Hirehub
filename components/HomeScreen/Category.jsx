@@ -29,7 +29,7 @@ export default function Category({textData}) {
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
-            marginTop: 10,
+            // marginTop: 10,
             padding: 20,
           }}
         >
@@ -47,7 +47,7 @@ export default function Category({textData}) {
               fontFamily: "poppins-med",
             }}
           >
-            View All
+            {/* View All */}
           </Text>
         </View>
       )}
@@ -56,7 +56,11 @@ export default function Category({textData}) {
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         style={{
-          marginLeft: 20,
+          marginLeft: 10,
+          backgroundColor: "white",
+          padding: 10,
+          borderRadius: 10,
+          marginRight: 10,
         }}
         renderItem={({ item, index }) => (
           <CategoryList item={item} index={index} />

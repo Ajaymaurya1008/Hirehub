@@ -1,5 +1,4 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React, { useEffect } from "react";
 import { Colors } from "../../constants/Colors";
 import { useRouter } from "expo-router";
 import JobChip from "../Common/JobChip";
@@ -10,10 +9,6 @@ export default function JobCard({ item, index }) {
   const getFirstTwoWords = (text) => {
     return text.split(" ").slice(0, 2).join("");
   };
-
-  useEffect(() => {
-    console.log("this is item", item.Id);
-  }, []);
 
   return (
     <TouchableOpacity

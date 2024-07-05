@@ -57,8 +57,13 @@ export default function explore() {
         style={{
           fontSize: 34,
           fontWeight: "600",
-          paddingTop: 30,
+          paddingVertical: 20,
           paddingHorizontal: 20,
+          backgroundColor: "white",
+          marginTop: 20,
+          marginHorizontal: 10,
+          borderRadius: 10,
+
         }}
       >
         Explore more

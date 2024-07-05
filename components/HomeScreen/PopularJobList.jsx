@@ -51,7 +51,7 @@ export default function PopularJobList() {
             fontFamily: "poppins-med",
           }}
         >
-          View All
+          {/* View All */}
         </Text>
       </View>
       <FlatList

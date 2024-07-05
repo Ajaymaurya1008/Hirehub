@@ -24,8 +24,7 @@ export default function JobsDetail() {
       const list = docSnap.data();
       setJobDetail(list);
     }
-    console.log("ss", jobDetail);
-  };
+  }
 
   useEffect(() => {
     getJobDetailByID();
@@ -146,5 +145,6 @@ export default function JobsDetail() {
         </Text>
       </TouchableOpacity>
     </ScrollView>
-  );
+  )
 }
+

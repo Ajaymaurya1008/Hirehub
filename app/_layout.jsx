@@ -4,6 +4,7 @@ import { Stack } from "expo-router";
 import { ClerkProvider } from "@clerk/clerk-expo";
 import Login from "./login";
 import * as SecureStore from "expo-secure-store";
+import SignInWithOAuth from "@/app/login";
 
 const tokenCache = {
   async getToken(key) {
@@ -40,7 +41,7 @@ export default function RootLayout() {
         </Stack>
       </SignedIn>
       <SignedOut>
-        <Login />
+        <SignInWithOAuth />
       </SignedOut>
     </ClerkProvider>
   );

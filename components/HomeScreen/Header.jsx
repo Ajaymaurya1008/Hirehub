@@ -10,17 +10,10 @@ export default function Header() {
   const { user } = useUser();
 
   return (
-    // <LinearGradient
-    //   colors={["#00c6fb", "#005bea"]}
-    //   style={{
-    //     borderBottomLeftRadius: 20,
-    //     borderBottomRightRadius: 20,
-    //   }}
-    // >
     <View
       style={{
         padding: 20,
-        paddingTop: 50,
+        paddingTop: 30,
         backgroundColor: Colors.PRIMARY,
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
