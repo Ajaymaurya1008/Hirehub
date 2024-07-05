@@ -1,10 +1,10 @@
 import React from "react";
 import * as WebBrowser from "expo-web-browser";
-import { Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { useOAuth } from "@clerk/clerk-expo";
 import { useWarmUpBrowser } from "../hooks/useWarmUpBrowser";
 
-WebBrowser.maybeCompleteAuthSession();
+// WebBrowser.maybeCompleteAuthSession();
 
 const SignInWithOAuth = () => {
   useWarmUpBrowser();
@@ -25,15 +25,37 @@ const SignInWithOAuth = () => {
   }, []);
 
   return (
-    <Text
+    <View
       style={{
-        fontSize: 60,
-        fontFamily: "poppins-med",
+        flex: 1,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
-      onPress={onPress}
     >
-      Sign Up
-    </Text>
+      <TouchableOpacity
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "orange",
+          padding: 20,
+          borderRadius: 10,
+
+        }}
+        onPress={onPress}
+      >
+        <Text
+          style={{
+            fontSize: 60,
+            fontFamily: "poppins-med",
+
+          }}
+        >
+          Sign Up
+        </Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 export default SignInWithOAuth;

@@ -1,13 +1,13 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-// import { useUser } from "@clerk/clerk-expo";
+import { useUser } from "@clerk/clerk-expo";
 import { Colors } from "../../constants/Colors";
 import { TextInput } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function Header() {
-  // const { user } = useUser();
+  const { user } = useUser();
 
   return (
     // <LinearGradient
@@ -37,7 +37,7 @@ export default function Header() {
         <Image
           source={{
             uri:
-              // user?.imageUrl ||
+              user?.imageUrl ||
               "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg",
           }}
           style={{
@@ -61,7 +61,7 @@ export default function Header() {
               color: "#fff",
             }}
           >
-            { "Ajay Maurya"}
+            {user?.fullName}
           </Text>
         </View>
       </View>

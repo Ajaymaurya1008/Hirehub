@@ -18,10 +18,9 @@ export default function JobsbyCategory() {
       );
       const querySnapshot = await getDocs(q);
       const list = querySnapshot.docs.map((doc) => ({
-        JobID: doc?.id,
+        JobId: doc?.id,
         ...doc.data(),
       }));
-      // console.log(list)
       setJobList(list);
     } catch (error) {
       console.log(error);

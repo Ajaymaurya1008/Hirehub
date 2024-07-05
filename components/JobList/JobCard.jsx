@@ -1,20 +1,23 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Colors } from "../../constants/Colors";
 import { useRouter } from "expo-router";
 import JobChip from "../Common/JobChip";
 
 export default function JobCard({ item, index }) {
   const router = useRouter();
-  // console.log(item.JobId);
 
   const getFirstTwoWords = (text) => {
     return text.split(" ").slice(0, 2).join("");
   };
 
+  useEffect(() => {
+    console.log("this is item", item.Id);
+  }, []);
+
   return (
     <TouchableOpacity
-      onPress={() => router.push(`JobDetail/${item.JobID}`)}
+      onPress={() => router.push(`JobDetail/${item.JobId}`)}
       style={{
         display: "flex",
         flexDirection: "column",

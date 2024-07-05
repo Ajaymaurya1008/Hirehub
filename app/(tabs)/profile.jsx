@@ -3,7 +3,7 @@ import React from "react";
 import { useClerk, useUser } from "@clerk/clerk-expo";
 
 export default function profile() {
-  // const { user } = useUser();
+  const { user } = useUser();
   const { signOut } = useClerk();
 
   const handeleLogOut = async () => {
@@ -13,8 +13,8 @@ export default function profile() {
 
   const handleShare = async () => {
     Share.share({
-      message:"Download hirehub app now"
-    })
+      message: "Download hirehub app now",
+    });
   };
 
   return (
@@ -44,7 +44,7 @@ export default function profile() {
         <Image
           source={{
             uri:
-              // user.imageUrl ||
+              user.imageUrl ||
               "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg",
           }}
           style={{
@@ -53,8 +53,8 @@ export default function profile() {
             borderRadius: 99,
           }}
         />
-        <Text>{ "Ajay Maurya"}</Text>
-        <Text>{"ajmaurya@gmail.com"}</Text>
+        <Text>{user?.fullName}</Text>
+        <Text>{user.primaryEmailAddress.emailAddress}</Text>
       </View>
       <View
         style={{

@@ -14,11 +14,11 @@ import JobChip from "../../components/Common/JobChip";
 
 export default function JobsDetail() {
   const [jobDetail, setJobDetail] = useState({});
-  const { JobID } = useLocalSearchParams();
+  const { JobId } = useLocalSearchParams();
   const navigation = useNavigation();
 
   const getJobDetailByID = async () => {
-    const docRef = doc(db, "Jobs", JobID);
+    const docRef = doc(db, "Jobs", JobId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const list = docSnap.data();
@@ -54,7 +54,11 @@ export default function JobsDetail() {
         }}
       >
         <Image
-          source={{ uri: jobDetail.Logo || "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg" }}
+          source={{
+            uri:
+              jobDetail.Logo ||
+              "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg",
+          }}
           style={{
             width: 100,
             height: 100,

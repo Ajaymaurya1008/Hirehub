@@ -30,7 +30,7 @@ export default function explore() {
       const querySnapshot = await getDocs(q);
       const list = [];
       querySnapshot.forEach((doc) => {
-        list.push({ id: doc.id, ...doc.data() });
+        list.push({ JobId: doc.id, ...doc.data() });
       });
 
       setAllJobs((prevJobs) => [...prevJobs, ...list]);

@@ -13,7 +13,7 @@ export default function JobCard({ item, index }) {
 
   return (
     <TouchableOpacity
-      onPress={() => router.push(`JobDetail/${item.JobID}`)}
+      onPress={() => router.push(`JobDetail/${item.JobId}`)}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -25,7 +25,7 @@ export default function JobCard({ item, index }) {
         backgroundColor: "#fff",
         overflow: "hidden",
         cursor: "pointer",
-        paddingBottom:15
+        paddingBottom: 15,
       }}
     >
       <View
@@ -37,7 +37,11 @@ export default function JobCard({ item, index }) {
         }}
       >
         <Image
-          source={{ uri: item.Logo || "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg" }}
+          source={{
+            uri:
+              item.Logo ||
+              "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg",
+          }}
           style={{ width: 50, height: 50, borderRadius: 10 }}
         />
         <View

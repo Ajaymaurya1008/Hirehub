@@ -12,7 +12,7 @@ export default function PopularJobList() {
     const q = query(collection(db, "Jobs"));
     const querySnapshot = await getDocs(q);
     const list = querySnapshot.docs.map((doc) => ({
-      JobID: doc?.id,
+      JobId: doc?.id,
       ...doc.data(),
     }));
     setJobs(list);
