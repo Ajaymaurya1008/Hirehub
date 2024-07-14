@@ -4,6 +4,7 @@ import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "../../constants/Colors";
 import { SafeAreaView } from "react-native-safe-area-context";
+import TabBar from "../../components/Common/TabBar";
 
 export default function TabLayout() {
   return (
@@ -14,6 +15,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs
+        // tabBar={(props) => <TabBar {...props} />}
         screenOptions={{
           headerShown: false,
           tabBarActiveTintColor: Colors.PRIMARY,

@@ -7,18 +7,25 @@ import {
   StyleSheet,
 } from "react-native";
 import React from "react";
-import { useClerk, useUser } from "@clerk/clerk-expo";
-import { Colors } from "../../constants/Colors";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { LinearGradient } from "expo-linear-gradient";
-import { Linking, Alert } from "react-native";
+import { Linking } from "react-native";
+import { useSecureUser } from "../../hooks/useSecureUser";
+import { router } from "expo-router";
+import * as SecureStore from "expo-secure-store";
 
 export default function profile() {
-  const { user } = useUser();
-  const { signOut } = useClerk();
-
-  const handeleLogOut = async () => {
-    await signOut();
-    console.log("Sign Out");
+  const { user } = useSecureUser();
+  const handleLogOut = async () => {
+    try {
+      await SecureStore.deleteItemAsync("idToken");
+      await SecureStore.deleteItemAsync("user");
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+      router.push("/");
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const handleShare = async () => {
@@ -104,7 +111,7 @@ export default function profile() {
           <Image
             source={{
               uri:
-                user.imageUrl ||
+                user?.photo ||
                 "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg",
             }}
             style={{
@@ -134,7 +141,7 @@ export default function profile() {
               color: "#fff",
             }}
           >
-            {user?.fullName}
+            {user?.name}
           </Text>
           <Text
             style={{
@@ -144,7 +151,7 @@ export default function profile() {
             numberOfLines={1}
             ellipsizeMode="tail"
           >
-            {user.primaryEmailAddress.emailAddress}
+            {user?.email}
           </Text>
         </View>
       </LinearGradient>
@@ -168,7 +175,7 @@ export default function profile() {
           />
           <Text style={styles.text}>Share</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handeleLogOut} style={styles.card}>
+        <TouchableOpacity onPress={handleLogOut} style={styles.card}>
           <Image
             style={styles.icon}
             source={{

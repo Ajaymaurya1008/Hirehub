@@ -11,6 +11,7 @@ import { useLocalSearchParams, useNavigation } from "expo-router";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import JobChip from "../../components/Common/JobChip";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function JobsDetail() {
   const [jobDetail, setJobDetail] = useState({});
@@ -24,7 +25,7 @@ export default function JobsDetail() {
       const list = docSnap.data();
       setJobDetail(list);
     }
-  }
+  };
 
   useEffect(() => {
     getJobDetailByID();
@@ -145,6 +146,5 @@ export default function JobsDetail() {
         </Text>
       </TouchableOpacity>
     </ScrollView>
-  )
+  );
 }
-

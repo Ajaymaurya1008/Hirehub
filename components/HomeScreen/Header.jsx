@@ -1,13 +1,12 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-import { useUser } from "@clerk/clerk-expo";
 import { Colors } from "../../constants/Colors";
 import { TextInput } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
+import { useSecureUser } from "../../hooks/useSecureUser";
 
 export default function Header() {
-  const { user } = useUser();
+  const { user } = useSecureUser();
 
   return (
     <View
@@ -30,7 +29,7 @@ export default function Header() {
         <Image
           source={{
             uri:
-              user?.imageUrl ||
+              user?.photo ||
               "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg",
           }}
           style={{
@@ -54,7 +53,7 @@ export default function Header() {
               color: "#fff",
             }}
           >
-            {user?.fullName}
+            {user?.name}
           </Text>
         </View>
       </View>
@@ -81,6 +80,5 @@ export default function Header() {
         />
       </View>
     </View>
-    // </LinearGradient>
   );
 }
