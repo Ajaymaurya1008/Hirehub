@@ -22,7 +22,7 @@ export default function profile() {
       await SecureStore.deleteItemAsync("user");
       await GoogleSignin.revokeAccess();
       await GoogleSignin.signOut();
-      router.push("/");
+      router.replace("/");
     } catch (e) {
       console.log(e);
     }

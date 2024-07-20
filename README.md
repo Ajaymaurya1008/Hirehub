@@ -1,50 +1,112 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+# Hirehub
 
-## Get started
+Welcome to Hirehub, a job listing application built with Expo and React Native. This project aims to provide a seamless experience for users to explore and apply for jobs.
 
-1. Install dependencies
+## Table of Contents
+- [Installation](#installation)
+- [Setup](#setup)
+- [Build](#build)
+- [Linting](#linting)
+- [Use Cases](#use-cases)
+- [Tech Stack](#tech-stack)
+- [Libraries](#libraries)
+- [Authentication](#authentication)
+- [Features](#features)
+- [Contributing Guide](#contributing-guide)
+- [License](#license)
+- [Contact](#contact)
 
-   ```bash
-   npm install
-   ```
+## Installation
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+To get started with the project, clone the repository and install the dependencies:
 
 ```bash
-npm run reset-project
+git clone https://github.com/yourusername/hirehub.git
+cd hirehub
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Setup
 
-## Learn more
+Before running the application, ensure you have the necessary environment variables set up. Create a `.env` file in the root directory and add the following:
 
-To learn more about developing your project with Expo, look at the following resources:
+```env
+GOOGLE_SERVICES_JSON=path/to/your/google-services.json
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Build
 
-## Join the community
+To build the project for different platforms, use the following commands:
 
-Join our community of developers creating universal apps.
+- Android: `npm run android`
+- iOS: `npm run ios`
+- Web: `npm run web`
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Linting
+
+To maintain code quality, run the linter:
+
+```bash
+npm run lint
+```
+
+## Use Cases
+
+1. **Explore Jobs**: Users can browse through a list of available jobs.
+2. **Job Details**: Users can view detailed information about a job.
+3. **Apply for Jobs**: Users can apply for jobs directly through the app.
+4. **User Authentication**: Users can sign in using Google Sign-In.
+
+## Tech Stack
+
+- **Frontend**: React Native, Expo
+- **Backend**: Firebase Firestore
+- **Authentication**: Google Sign-In
+
+## Libraries
+
+- `expo`: Core library for building React Native apps with Expo.
+- `@react-native-google-signin/google-signin`: Google Sign-In for React Native.
+- `firebase`: Firebase SDK for Firestore and other Firebase services.
+- `expo-router`: File-based routing for Expo apps.
+- `expo-secure-store`: Secure storage for sensitive data.
+
+## Authentication
+
+The app uses Google Sign-In for user authentication. The configuration is done in the `app/index.jsx` file:
+
+```javascript
+useEffect(() => {
+  GoogleSignin.configure({
+    webClientId: "YOUR_WEB_CLIENT_ID",
+  });
+}, []);
+```
+
+## Features
+
+- **Job Listings**: Browse and search for jobs.
+- **Job Details**: View detailed information about each job.
+- **Google Sign-In**: Secure authentication using Google.
+- **Responsive Design**: Optimized for both mobile and web platforms.
+
+## Contributing Guide
+
+We welcome contributions from the community. To contribute, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/your-feature-name`.
+3. Make your changes and commit them: `git commit -m 'Add some feature'`.
+4. Push to the branch: `git push origin feature/your-feature-name`.
+5. Open a pull request.
+
+Please ensure your code adheres to the project's coding standards and passes all tests.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any questions or feedback, please open an issue or contact the project maintainers.

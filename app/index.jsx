@@ -11,10 +11,11 @@ export default function Index() {
     try {
       await GoogleSignin.hasPlayServices();
       const { idToken, user } = await GoogleSignin.signIn();
-      console.log(user);
-      await SecureStore.setItemAsync("idToken", idToken);
-      await SecureStore.setItemAsync("user", JSON.stringify(user));
-      router.push("/home");
+      if (idToken) {
+        await SecureStore.setItemAsync("idToken", idToken);
+        await SecureStore.setItemAsync("user", JSON.stringify(user));
+        router.replace("/home");
+      }
     } catch (e) {
       console.log(e);
     }
@@ -30,7 +31,7 @@ export default function Index() {
     const checkToken = async () => {
       const token = await SecureStore.getItemAsync("idToken");
       if (token) {
-        router.push("/home");
+        router.replace("/home");
       }
     };
     checkToken();
