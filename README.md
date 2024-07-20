@@ -1,6 +1,8 @@
 
 # Hirehub
 
+![Hirehub Logo](https://res.cloudinary.com/dfh7pmyj0/image/upload/v1721490407/Screenshot_2024-07-20_211319_pgeqto.png)
+
 Welcome to Hirehub, a job listing application built with Expo and React Native. This project aims to provide a seamless experience for users to explore and apply for jobs.
 
 ## Table of Contents
@@ -103,6 +105,10 @@ We welcome contributions from the community. To contribute, follow these steps:
 
 Please ensure your code adheres to the project's coding standards and passes all tests.
 
+## Testing Phase
+
+Hirehub is currently in the testing phase. To view the app on the Play Store, please send your email address to the ajaykvmaurya@gmail.com.
+
 ## Contact
 
-For any questions or feedback, please open an issue or contact the project maintainers.
+For any questions or feedback, please open an issue or contact at ajaykvmaurya@gmail.com.
