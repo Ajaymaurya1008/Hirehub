@@ -103,10 +103,6 @@ We welcome contributions from the community. To contribute, follow these steps:
 
 Please ensure your code adheres to the project's coding standards and passes all tests.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
 For any questions or feedback, please open an issue or contact the project maintainers.
