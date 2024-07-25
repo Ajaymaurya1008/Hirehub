@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "Hirehub",
+    "slug": "hirehub",
+    "version": "3.0.0",
+    "orientation": "portrait",
+    "icon": "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1720197921/1000242168_ngelld.png",
+    "scheme": "hirehub",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image":
+        "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1720197921/1000242168_ngelld.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ajaymaurya1008.hirehub"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage":
+          "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1720197921/1000242168_ngelld.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.ajaymaurya1008.hirehub",
+      "googleServicesFile": "./google-services.json",
+      "versionCode": 3
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon":
+        "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1720197921/1000242168_ngelld.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "@react-native-google-signin/google-signin"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "ab356ee6-ccb6-411e-9a12-00a39c404e89"
+      }
+    },
+    "owner": "ajaymaurya08"
+  }
+}
