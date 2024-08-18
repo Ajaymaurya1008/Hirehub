@@ -2,14 +2,14 @@
   "expo": {
     "name": "Hirehub",
     "slug": "hirehub",
-    "version": "3.0.0",
+    "version": "5.0.0",
     "orientation": "portrait",
-    "icon": "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1720197921/1000242168_ngelld.png",
+    "icon": "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1723119415/hirehub-logo_1_sctfxp.png",
     "scheme": "hirehub",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image":
-        "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1720197921/1000242168_ngelld.png",
+        "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1723119415/hirehub-logo_1_sctfxp.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -20,12 +20,12 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage":
-          "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1720197921/1000242168_ngelld.png",
+          "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1723119415/hirehub-logo_1_sctfxp.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.ajaymaurya1008.hirehub",
       "googleServicesFile": "./google-services.json",
-      "versionCode": 3
+      "versionCode": 5
     },
     "web": {
       "bundler": "metro",
@@ -46,9 +46,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": "ab356ee6-ccb6-411e-9a12-00a39c404e89"
+        "projectId": "9d0bb2fd-10e1-4ba9-a865-2ffd0fbe0bf8"
       }
     },
-    "owner": "ajaymaurya08"
+    "owner": "ajaymaurya1008"
   }
 }
