@@ -5,6 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Linking,
+  Alert,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams, useNavigation } from "expo-router";
@@ -24,6 +25,14 @@ export default function JobsDetail() {
     if (docSnap.exists()) {
       const list = docSnap.data();
       setJobDetail(list);
+    }
+  };
+
+  const handleLinkPress = (url) => {
+    if (url) {
+      Linking.openURL(url);
+    }else{
+      Alert.alert("No Link Found");
     }
   };
 
@@ -125,7 +134,7 @@ export default function JobsDetail() {
         <Text>{jobDetail.About}</Text>
       </View>
       <TouchableOpacity
-        onPress={() => Linking.openURL(jobDetail.Link)}
+        onPress={() => handleLinkPress(jobDetail.Link)}
         style={{
           borderRadius: 10,
           marginHorizontal: 15,

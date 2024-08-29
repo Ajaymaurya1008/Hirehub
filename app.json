@@ -8,8 +8,7 @@
     "scheme": "hirehub",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image":
-        "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1723119415/hirehub-logo_1_sctfxp.png",
+      "image": "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1723119415/hirehub-logo_1_sctfxp.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,19 +18,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage":
-          "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1723119415/hirehub-logo_1_sctfxp.png",
+        "foregroundImage": "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1723119415/hirehub-logo_1_sctfxp.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.ajaymaurya1008.hirehub",
       "googleServicesFile": "./google-services.json",
-      "versionCode": 5
+      "serviceAccountKeyPath":"./service-account-key.json",
+      "versionCode": 7
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon":
-        "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1720197921/1000242168_ngelld.png"
+      "favicon": "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1720197921/1000242168_ngelld.png"
     },
     "plugins": [
       "expo-router",
@@ -49,6 +47,12 @@
         "projectId": "9d0bb2fd-10e1-4ba9-a865-2ffd0fbe0bf8"
       }
     },
-    "owner": "ajaymaurya1008"
+    "owner": "ajaymaurya1008",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/9d0bb2fd-10e1-4ba9-a865-2ffd0fbe0bf8"
+    }
   }
 }
