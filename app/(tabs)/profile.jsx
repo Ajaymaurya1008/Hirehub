@@ -30,7 +30,8 @@ export default function profile() {
 
   const handleShare = async () => {
     Share.share({
-      message: "Download hirehub app now",
+      message:
+        "Download hirehub app now \n https://play.google.com/store/apps/details?id=com.ajaymaurya1008.hirehub",
     });
   };
 
