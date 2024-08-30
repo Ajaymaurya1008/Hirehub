@@ -69,7 +69,7 @@ export default function Index() {
                 fontFamily: "poppins-med",
               }}
             >
-              Get Started now
+              Get Started
             </Text>
           </TouchableOpacity>
         </View>
