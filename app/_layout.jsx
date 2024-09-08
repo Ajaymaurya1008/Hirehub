@@ -3,6 +3,8 @@ import { Redirect, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import * as Updates from "expo-updates";
+import messaging from "@react-native-firebase/messaging";
+import { Alert } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,6 +28,57 @@ export default function RootLayout() {
       alert(`Error fetching latest Expo update: ${error}`);
     }
   }
+
+  async function requestUserPermission() {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+    if (enabled) {
+      console.log("Authorization status:", authStatus);
+    }
+  }
+
+  useEffect(() => {
+    if (requestUserPermission()) {
+      messaging()
+        .getToken()
+        .then((token) => {
+          console.log(token);
+        });
+    } else {
+      console.log("User permission not granted", authStatus);
+    }
+
+    messaging()
+      .getInitialNotification()
+      .then(async (remoteMessage) => {
+        if (remoteMessage) {
+          console.log(
+            "Notification caused app to open from quiet state:",
+            remoteMessage.notification
+          );
+        }
+      });
+
+    messaging().onNotificationOpenedApp((remoteMessage) => {
+      console.log(
+        "notification caused app to open from background state:",
+        remoteMessage.notification
+      );
+    });
+
+    messaging().setBackgroundMessageHandler(async (remoteMessage) => {
+      console.log("Message handled in the background state:", remoteMessage);
+    });
+
+    const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+      Alert.alert("A new message is here!", JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
+  }, []);
 
   useEffect(() => {
     onFetchUpdateAsync();
