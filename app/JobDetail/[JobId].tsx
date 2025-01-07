@@ -12,23 +12,23 @@ import { useLocalSearchParams, useNavigation } from "expo-router";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import JobChip from "../../components/Common/JobChip";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { JobType } from "@/types/job";
 
 export default function JobsDetail() {
-  const [jobDetail, setJobDetail] = useState({});
+  const [jobDetail, setJobDetail] = useState<JobType>();
   const { JobId } = useLocalSearchParams();
   const navigation = useNavigation();
 
   const getJobDetailByID = async () => {
-    const docRef = doc(db, "Jobs", JobId);
+    const docRef = doc(db, "Jobs", JobId as string);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      const list = docSnap.data();
+      const list = docSnap.data() as JobType;
       setJobDetail(list);
     }
   };
 
-  const handleLinkPress = (url) => {
+  const handleLinkPress = (url?:string) => {
     if (url) {
       Linking.openURL(url);
     }else{
@@ -65,7 +65,7 @@ export default function JobsDetail() {
         <Image
           source={{
             uri:
-              jobDetail.Logo ||
+              jobDetail?.Logo ||
               "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg",
           }}
           style={{
@@ -81,7 +81,7 @@ export default function JobsDetail() {
             fontFamily: "poppins-bold",
           }}
         >
-          {jobDetail.Role}
+          {jobDetail?.Role}
         </Text>
         <Text
           style={{
@@ -90,7 +90,7 @@ export default function JobsDetail() {
             fontWeight: "500",
           }}
         >
-          {jobDetail.Company}
+          {jobDetail?.Company}
         </Text>
         <View
           style={{
@@ -101,9 +101,9 @@ export default function JobsDetail() {
             alignItems: "center",
           }}
         >
-          <JobChip data={jobDetail.Location || "Unknown"} />
-          <JobChip data={jobDetail.Type || "Fulltime"} />
-          <JobChip data={jobDetail.JobPublisher || "Website"} />
+          <JobChip data={jobDetail?.Location || "Unknown"} />
+          <JobChip data={jobDetail?.Type || "Fulltime"} />
+          <JobChip data={jobDetail?.JobPublisher || "Website"} />
         </View>
       </View>
       <Text
@@ -131,10 +131,10 @@ export default function JobsDetail() {
           margin: 15,
         }}
       >
-        <Text>{jobDetail.About}</Text>
+        <Text>{jobDetail?.About}</Text>
       </View>
       <TouchableOpacity
-        onPress={() => handleLinkPress(jobDetail.Link)}
+        onPress={() => handleLinkPress(jobDetail?.Link)}
         style={{
           borderRadius: 10,
           marginHorizontal: 15,

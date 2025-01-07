@@ -39,22 +39,6 @@ export default function profile() {
     Linking.openURL("https://hirehub-web.vercel.app/privacy");
   };
 
-  // const handleDeleteAccount = async () => {
-  //   try {
-  //     await client.user.deleteUser();
-  //     Alert.alert(
-  //       "Account deleted",
-  //       "Your account has been successfully deleted."
-  //     );
-  //   } catch (error) {
-  //     console.error("Error deleting account:", error);
-  //     Alert.alert(
-  //       "Error",
-  //       "There was an error deleting your account. Please try again."
-  //     );
-  //   }
-  // };
-
   return (
     <View
       style={{
@@ -105,8 +89,6 @@ export default function profile() {
             alignItems: "center",
             flexDirection: "column",
             width: "30%",
-            // borderWidth: 1,
-            // borderColor: "#000",
           }}
         >
           <Image
@@ -131,8 +113,6 @@ export default function profile() {
             flexDirection: "column",
             width: "70%",
             gap: 5,
-            // borderWidth: 1,
-            // borderColor: "#000",
           }}
         >
           <Text

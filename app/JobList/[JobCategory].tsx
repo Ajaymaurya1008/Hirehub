@@ -4,9 +4,10 @@ import { useLocalSearchParams, useNavigation } from "expo-router";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import JobCard from "../../components/JobList/JobCard";
+import { JobListType } from "@/types/job";
 
 export default function JobsbyCategory() {
-  const [JobList, setJobList] = useState([]);
+  const [JobList, setJobList] = useState<JobListType>([]);
   const naviagte = useNavigation();
   const { JobCategory } = useLocalSearchParams();
 
@@ -20,7 +21,7 @@ export default function JobsbyCategory() {
       const list = querySnapshot.docs.map((doc) => ({
         JobId: doc?.id,
         ...doc.data(),
-      }));
+      })) as JobListType
       setJobList(list);
     } catch (error) {
       console.log(error);

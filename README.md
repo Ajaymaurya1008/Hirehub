@@ -37,6 +37,25 @@ Before running the application, ensure you have the necessary environment variab
 GOOGLE_SERVICES_JSON=path/to/your/google-services.json
 ```
 
+In your firebase app, add SHA ( SHA1 and SHA256 ) certificate fingerprints for all 3 variants
+
+App signing key certificate for play store
+Upload key certificate for dev build made by eas cloud, it can be retrieved by command
+```
+  eas credentials
+```
+For local builds, cd android and type the command
+```
+  cd android
+  ./gradlew signingReport
+```
+It will load multiple signingReport for many task, add the certificate which has the following
+```
+  Variant: debug
+  Config: debug
+```
+
+
 ## Build
 
 To build the project for different platforms, use the following commands:

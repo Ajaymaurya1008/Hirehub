@@ -3,18 +3,19 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import { FlatList } from "react-native";
+import { SliderType } from "@/types/slider";
 
 export default function Slider() {
-  const [sliderLsit, setSliderList] = useState([]);
+  const [sliderLsit, setSliderList] = useState<SliderType[]>([]);
 
   const GetSlidertList = async () => {
     const q = query(collection(db, "Slider"));
     const querySnapshot = await getDocs(q);
 
-    const list = [];
+    const list:SliderType[] = [];
     querySnapshot.forEach((doc) => {
-      list.push(doc.data());
-    });
+      list.push(doc.data() as SliderType)
+    })
 
     // const list = querySnapshot.docs.map((doc) => doc.data());
     setSliderList(list);

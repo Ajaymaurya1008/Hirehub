@@ -23,18 +23,19 @@ export default function RootLayout() {
     if (enabled) {
       console.log("Authorization status:", authStatus);
     }
+    return enabled
   }
 
   useEffect(() => {
-    if (requestUserPermission()) {
-      messaging()
-        .getToken()
-        .then((token) => {
-          console.log(token);
-        });
-    } else {
-      console.log("User permission not granted", authStatus);
-    }
+    requestUserPermission().then((res)=>{
+      if(!res) return
+    })
+
+    messaging()
+      .getToken()
+      .then((token) => {
+        console.log(token);
+      });
 
     messaging()
       .getInitialNotification()
@@ -64,7 +65,6 @@ export default function RootLayout() {
 
     return unsubscribe;
   }, []);
-
 
   useEffect(() => {
     async function prepare() {

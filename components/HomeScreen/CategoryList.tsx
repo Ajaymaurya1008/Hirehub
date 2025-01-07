@@ -6,15 +6,20 @@ import {
 } from "react-native-gesture-handler";
 import { Colors } from "../../constants/Colors";
 import { useRouter } from "expo-router";
+import { CategoryType } from "@/types/category";
 
-
-export default function CategoryList({ item, index }) {
-
+export default function CategoryList({
+  item,
+  index,
+}: {
+  item: CategoryType;
+  index: number;
+}) {
   const router = useRouter();
 
   return (
     <GestureHandlerRootView key={index}>
-      <TouchableOpacity onPress={() => router.push(`/JobList/${item.name}`)}>
+      <TouchableOpacity onPress={() => router.push(`/JobList/${item?.name}`)}>
         <View
           style={{
             display: "flex",
@@ -37,7 +42,11 @@ export default function CategoryList({ item, index }) {
                 height: 40,
                 width: 40,
               }}
-              source={{ uri: item.icon || "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg" }}
+              source={{
+                uri:
+                  item?.icon ||
+                  "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg",
+              }}
             />
           </View>
           <Text

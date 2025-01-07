@@ -5,14 +5,16 @@ import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import { FlatList } from "react-native";
 import CategoryList from "./CategoryList";
+import { JobListType } from "@/types/job";
+import { CategoryType } from "@/types/category";
 
-export default function Category({textData}) {
-  const [category, setCategory] = useState([]);
+export default function Category({textData}:{textData?:boolean}) {
+  const [category, setCategory] = useState<CategoryType[]>([]);
 
   const getCategory = async () => {
     const q = query(collection(db, "Category"));
     const querySnapshot = await getDocs(q);
-    const list = querySnapshot.docs.map((doc) => doc.data());
+    const list = querySnapshot.docs.map((doc) => doc.data()) as CategoryType[];
     setCategory(list);
   };
 
@@ -29,7 +31,6 @@ export default function Category({textData}) {
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
-            // marginTop: 10,
             padding: 20,
           }}
         >

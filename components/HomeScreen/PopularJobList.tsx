@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../../configs/FirebaseConfig";
 import JobCard from "./JobCard";
+import { JobListType } from "@/types/job";
 
 export default function PopularJobList() {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState<JobListType>([]);
 
   const getJObs = async () => {
     const q = query(collection(db, "Jobs"));
@@ -14,7 +15,7 @@ export default function PopularJobList() {
     const list = querySnapshot.docs.map((doc) => ({
       JobId: doc?.id,
       ...doc.data(),
-    }));
+    })) as JobListType
     setJobs(list);
   };
 

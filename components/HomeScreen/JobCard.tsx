@@ -3,11 +3,18 @@ import React from "react";
 import { Colors } from "../../constants/Colors";
 import JobChip from "../Common/JobChip";
 import { useRouter } from "expo-router";
+import { JobType } from "@/types/job";
 
-export default function JobCard({ item, index }) {
+export default function JobCard({
+  item,
+  index,
+}: {
+  item: JobType;
+  index: number;
+}) {
   const router = useRouter();
 
-  const getFirstTwoWords = (text) => {
+  const getFirstTwoWords = (text: string) => {
     return text.split(" ").slice(0, 2).join("");
   };
 
