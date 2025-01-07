@@ -1,8 +1,7 @@
 import { useFonts } from "expo-font";
-import { Redirect, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import * as Updates from "expo-updates";
 import messaging from "@react-native-firebase/messaging";
 import { Alert } from "react-native";
 
@@ -66,9 +65,6 @@ export default function RootLayout() {
     return unsubscribe;
   }, []);
 
-  useEffect(() => {
-    onFetchUpdateAsync();
-  }, []);
 
   useEffect(() => {
     async function prepare() {
