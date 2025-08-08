@@ -26,3 +26,4 @@ google-services.json
 service-account-key.json
 package-lock.json
 configs
+*.aab

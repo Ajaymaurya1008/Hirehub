@@ -34,7 +34,7 @@ export default function RootLayout() {
     messaging()
       .getToken()
       .then((token) => {
-        console.log(token);
+        console.log("fcm token", token);
       });
 
     messaging()
