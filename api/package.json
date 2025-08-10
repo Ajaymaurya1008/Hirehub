@@ -1,0 +1,27 @@
+{
+  "name": "hirehub-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "job-search",
+    "firebase",
+    "nodejs",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "A Node.js backend service that fetches job listings and stores them in Firebase Firestore",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase": "^10.12.2",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^3.3.2"
+  }
+}
