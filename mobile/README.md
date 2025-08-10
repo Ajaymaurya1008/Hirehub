@@ -124,10 +124,6 @@ We welcome contributions from the community. To contribute, follow these steps:
 
 Please ensure your code adheres to the project's coding standards and passes all tests.
 
-## Testing Phase
-
-Hirehub is currently in the testing phase. To view the app on the Play Store, please send your email address to the ajaykvmaurya@gmail.com.
-
 ## Contact
 
 For any questions or feedback, please open an issue or contact at ajaykvmaurya@gmail.com.
