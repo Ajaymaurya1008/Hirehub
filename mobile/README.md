@@ -1,129 +1,203 @@
+# HireHub Mobile App
 
-# Hirehub
+![HireHub Mobile App](https://res.cloudinary.com/dfh7pmyj0/image/upload/v1721490407/Screenshot_2024-07-20_211319_pgeqto.png)
 
-![Hirehub Logo](https://res.cloudinary.com/dfh7pmyj0/image/upload/v1721490407/Screenshot_2024-07-20_211319_pgeqto.png)
+> **📱 Mobile Application** for the HireHub job search platform
 
-Welcome to Hirehub, a job listing application built with Expo and React Native. This project aims to provide a seamless experience for users to explore and apply for jobs.
+This is the React Native mobile application component of the HireHub project. Built with Expo and React Native, it provides a native mobile experience for job seekers to browse, search, and apply for jobs.
 
-## Table of Contents
-- [Installation](#installation)
-- [Setup](#setup)
-- [Build](#build)
-- [Linting](#linting)
-- [Use Cases](#use-cases)
-- [Tech Stack](#tech-stack)
-- [Libraries](#libraries)
-- [Authentication](#authentication)
-- [Features](#features)
-- [Contributing Guide](#contributing-guide)
-- [License](#license)
-- [Contact](#contact)
+## 🚀 Quick Start
 
-## Installation
+### Prerequisites
 
-To get started with the project, clone the repository and install the dependencies:
+- Node.js (v14 or higher)
+- Expo CLI (`npm install -g @expo/cli`)
+- Android Studio (for Android development)
+- Xcode (for iOS development, macOS only)
+
+### Installation
 
 ```bash
-git clone https://github.com/yourusername/hirehub.git
-cd hirehub
+# Navigate to mobile directory
+cd mobile
+
+# Install dependencies
 npm install
+
+# Start the development server
+npm start
 ```
 
-## Setup
+### Environment Setup
 
-Before running the application, ensure you have the necessary environment variables set up. Create a `.env` file in the root directory and add the following:
+Create a `.env` file in the mobile directory:
 
 ```env
 GOOGLE_SERVICES_JSON=path/to/your/google-services.json
 ```
 
-In your firebase app, add SHA ( SHA1 and SHA256 ) certificate fingerprints for all 3 variants
+## 🔧 Configuration
 
-App signing key certificate for play store
-Upload key certificate for dev build made by eas cloud, it can be retrieved by command
+### Firebase Setup
+
+1. **Add SHA Certificates to Firebase Console:**
+
+   - App signing key certificate for Play Store
+   - Upload key certificate for EAS cloud builds
+   - Debug certificate for local development
+
+2. **Get SHA Certificates:**
+
+   **For EAS Cloud Builds:**
+
+   ```bash
+   eas credentials
+   ```
+
+   **For Local Builds:**
+
+   ```bash
+   cd android
+   ./gradlew signingReport
+   ```
+
+   Look for the certificate with:
+
+   ```
+   Variant: debug
+   Config: debug
+   ```
+
+### Google Sign-In Configuration
+
+Configure Google Sign-In in your Firebase project and update the web client ID in the app configuration.
+
+## 📱 Features
+
+### Core Functionality
+
+- **Job Browsing**: Browse jobs by category (Frontend, Backend, DevOps, etc.)
+- **Job Details**: View comprehensive job information
+- **Direct Application**: Apply for jobs through external links
+- **User Authentication**: Secure Google Sign-In integration
+- **Push Notifications**: Real-time job alerts via Firebase Cloud Messaging
+
+### User Experience
+
+- **Native Performance**: Built with React Native for optimal performance
+- **Cross-Platform**: Works on both Android and iOS
+- **Offline Support**: Cached job data for offline browsing
+- **Modern UI**: Custom components with Poppins typography
+- **Responsive Design**: Optimized for various screen sizes
+
+## 🛠️ Tech Stack
+
+- **Framework**: React Native with Expo
+- **Navigation**: Expo Router (file-based routing)
+- **Authentication**: Google Sign-In, Clerk
+- **Backend Integration**: Firebase Firestore
+- **Push Notifications**: Firebase Cloud Messaging
+- **Styling**: React Native Linear Gradient
+- **State Management**: React hooks
+- **Font**: Poppins (Regular, Medium, Bold)
+
+## 📁 Project Structure
+
 ```
-  eas credentials
+mobile/
+├── app/                    # Expo Router pages
+│   ├── (tabs)/            # Tab navigation
+│   ├── JobDetail/         # Job detail screens
+│   └── JobList/           # Job listing screens
+├── components/            # Reusable components
+│   ├── Common/           # Shared components
+│   ├── HomeScreen/       # Home screen components
+│   └── JobList/          # Job list components
+├── assets/               # Static assets
+│   ├── fonts/           # Custom fonts
+│   └── images/          # App images
+├── types/               # TypeScript type definitions
+├── hooks/               # Custom React hooks
+└── configs/             # Configuration files
 ```
-For local builds, cd android and type the command
-```
-  cd android
-  ./gradlew signingReport
-```
-It will load multiple signingReport for many task, add the certificate which has the following
-```
-  Variant: debug
-  Config: debug
-```
 
+## 🚀 Build & Deployment
 
-## Build
-
-To build the project for different platforms, use the following commands:
-
-- Android: `npm run android`
-- iOS: `npm run ios`
-- Web: `npm run web`
-
-## Linting
-
-To maintain code quality, run the linter:
+### Development
 
 ```bash
+npm start          # Start Expo development server
+npm run android    # Run on Android emulator/device
+npm run ios        # Run on iOS simulator/device
+npm run web        # Run web version
+```
+
+### Production Builds
+
+**Android (APK/AAB):**
+
+```bash
+eas build --platform android
+```
+
+**iOS (IPA):**
+
+```bash
+eas build --platform ios
+```
+
+**Web:**
+
+```bash
+expo export --platform web
+```
+
+## 🧪 Testing
+
+```bash
+# Run tests
+npm test
+
+# Run linter
 npm run lint
 ```
 
-## Use Cases
+## �� App Information
 
-1. **Explore Jobs**: Users can browse through a list of available jobs.
-2. **Job Details**: Users can view detailed information about a job.
-3. **Apply for Jobs**: Users can apply for jobs directly through the app.
-4. **User Authentication**: Users can sign in using Google Sign-In.
+- **Package Name**: `com.ajaymaurya1008.hirehub`
+- **Version**: 12.0.0
+- **Platforms**: Android, iOS, Web
+- **Minimum SDK**: Android API 21+
+- **iOS Version**: iOS 13.0+
 
-## Tech Stack
+## 🔗 Related Links
 
-- **Frontend**: React Native, Expo
-- **Backend**: Firebase Firestore
-- **Authentication**: Google Sign-In
+- **📱 Download**: [Google Play Store](https://play.google.com/store/apps/details?id=com.ajaymaurya1008.hirehub)
+- **🌐 Web App**: [hirehub-web.vercel.app](https://hirehub-web.vercel.app/)
+- **📚 Main Project**: [HireHub Repository](../README.md)
 
-## Libraries
+## 🤝 Contributing
 
-- `expo`: Core library for building React Native apps with Expo.
-- `@react-native-google-signin/google-signin`: Google Sign-In for React Native.
-- `firebase`: Firebase SDK for Firestore and other Firebase services.
-- `expo-router`: File-based routing for Expo apps.
-- `expo-secure-store`: Secure storage for sensitive data.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes and commit them (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## Authentication
+### Development Guidelines
 
-The app uses Google Sign-In for user authentication. The configuration is done in the `app/index.jsx` file:
+- Follow React Native and Expo best practices
+- Use TypeScript for type safety
+- Maintain consistent code formatting
+- Test on both Android and iOS platforms
+- Update documentation for new features
 
-```javascript
-useEffect(() => {
-  GoogleSignin.configure({
-    webClientId: "YOUR_WEB_CLIENT_ID",
-  });
-}, []);
-```
+## 📞 Support
 
-## Features
+- **Email**: ajaykvmaurya@gmail.com
+- **Issues**: [GitHub Issues](https://github.com/yourusername/hirehub/issues)
+- **Documentation**: [Expo Docs](https://docs.expo.dev/)
 
-- **Job Listings**: Browse and search for jobs.
-- **Job Details**: View detailed information about each job.
-- **Google Sign-In**: Secure authentication using Google.
-- **Responsive Design**: Optimized for both mobile and web platforms.
+---
 
-## Contributing Guide
-
-We welcome contributions from the community. To contribute, follow these steps:
-
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature/your-feature-name`.
-3. Make your changes and commit them: `git commit -m 'Add some feature'`.
-4. Push to the branch: `git push origin feature/your-feature-name`.
-5. Open a pull request.
-
-Please ensure your code adheres to the project's coding standards and passes all tests.
-
-## Contact
-
-For any questions or feedback, please open an issue or contact at ajaykvmaurya@gmail.com.
+**Part of the [HireHub Project](../README.md) - Built with ❤️ by Ajay Maurya**
