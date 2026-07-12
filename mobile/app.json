@@ -2,16 +2,11 @@
   "expo": {
     "name": "Hirehub",
     "slug": "hirehub",
-    "version": "12.0.0",
+    "version": "12.1.0",
     "orientation": "portrait",
     "icon": "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1723119415/hirehub-logo_1_sctfxp.png",
     "scheme": "hirehub",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1723119415/hirehub-logo_1_sctfxp.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ajaymaurya1008.hirehub"
@@ -23,8 +18,7 @@
       },
       "package": "com.ajaymaurya1008.hirehub",
       "googleServicesFile": "./google-services.json",
-      "versionCode": 12,
-      "edgeToEdgeEnabled": true
+      "versionCode": 13
     },
     "web": {
       "bundler": "metro",
@@ -35,7 +29,15 @@
       "expo-router",
       "expo-secure-store",
       "@react-native-google-signin/google-signin",
-      "expo-font"
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "https://res.cloudinary.com/dfh7pmyj0/image/upload/v1723119415/hirehub-logo_1_sctfxp.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

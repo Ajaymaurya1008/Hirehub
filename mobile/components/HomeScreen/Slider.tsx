@@ -42,6 +42,7 @@ export default function Slider() {
           paddingLeft:10
         }}
         data={sliderLsit}
+        keyExtractor={(item, index) => `${item.imageUrl ?? "slide"}-${index}`}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (

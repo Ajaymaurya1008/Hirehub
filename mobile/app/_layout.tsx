@@ -2,8 +2,19 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import messaging from "@react-native-firebase/messaging";
+import { getApp } from "@react-native-firebase/app";
+import {
+  getInitialNotification,
+  getMessaging,
+  getToken,
+  onMessage,
+  onNotificationOpenedApp,
+  setBackgroundMessageHandler,
+} from "@react-native-firebase/messaging";
+import * as Notifications from "expo-notifications";
 import { Alert } from "react-native";
+
+const messaging = getMessaging(getApp());
 
 SplashScreen.preventAutoHideAsync();
 
@@ -15,15 +26,13 @@ export default function RootLayout() {
   });
 
   async function requestUserPermission() {
-    const authStatus = await messaging().requestPermission();
-    const enabled =
-      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+    const { status } = await Notifications.requestPermissionsAsync();
+    const enabled = status === "granted";
 
     if (enabled) {
-      console.log("Authorization status:", authStatus);
+      console.log("Authorization status:", status);
     }
-    return enabled
+    return enabled;
   }
 
   useEffect(() => {
@@ -31,35 +40,35 @@ export default function RootLayout() {
       if(!res) return
     })
 
-    messaging()
-      .getToken()
+    getToken(messaging)
       .then((token) => {
         console.log("fcm token", token);
+      })
+      .catch((e) => {
+        console.log("fcm token unavailable", e.message);
       });
 
-    messaging()
-      .getInitialNotification()
-      .then(async (remoteMessage) => {
-        if (remoteMessage) {
-          console.log(
-            "Notification caused app to open from quiet state:",
-            remoteMessage.notification
-          );
-        }
-      });
+    getInitialNotification(messaging).then(async (remoteMessage) => {
+      if (remoteMessage) {
+        console.log(
+          "Notification caused app to open from quiet state:",
+          remoteMessage.notification
+        );
+      }
+    });
 
-    messaging().onNotificationOpenedApp((remoteMessage) => {
+    onNotificationOpenedApp(messaging, (remoteMessage) => {
       console.log(
         "notification caused app to open from background state:",
         remoteMessage.notification
       );
     });
 
-    messaging().setBackgroundMessageHandler(async (remoteMessage) => {
+    setBackgroundMessageHandler(messaging, async (remoteMessage) => {
       console.log("Message handled in the background state:", remoteMessage);
     });
 
-    const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+    const unsubscribe = onMessage(messaging, async (remoteMessage) => {
       Alert.alert("A new message is here!", JSON.stringify(remoteMessage));
     });
 

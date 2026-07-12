@@ -22,10 +22,13 @@ export default function Index() {
   const signin = async () => {
     try {
       await GoogleSignin.hasPlayServices();
-      const { idToken, user } = await GoogleSignin.signIn();
-      if (idToken) {
-        await SecureStore.setItemAsync("idToken", idToken);
-        await SecureStore.setItemAsync("user", JSON.stringify(user));
+      const response = await GoogleSignin.signIn();
+      if (response.type === "success" && response.data.idToken) {
+        await SecureStore.setItemAsync("idToken", response.data.idToken);
+        await SecureStore.setItemAsync(
+          "user",
+          JSON.stringify(response.data.user)
+        );
         router.replace("/home");
       }
     } catch (e) {
@@ -35,7 +38,7 @@ export default function Index() {
 
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId: process.env.GOOGLE_WEB_CLIENT_ID,
+      webClientId: process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID,
     });
   }, []);
 

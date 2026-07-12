@@ -54,6 +54,7 @@ export default function Category({textData}:{textData?:boolean}) {
       )}
       <FlatList
         data={category}
+        keyExtractor={(item, index) => `${item.name ?? "category"}-${index}`}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         style={{

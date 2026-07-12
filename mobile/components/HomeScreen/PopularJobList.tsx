@@ -57,6 +57,7 @@ export default function PopularJobList() {
       </View>
       <FlatList
         data={jobs.slice(0, 5)}
+        keyExtractor={(item, index) => item.JobId ?? String(index)}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         ItemSeparatorComponent={() => <View style={{ width: 15 }} />}

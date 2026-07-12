@@ -47,6 +47,7 @@ export default function JobsbyCategory() {
             padding: 15,
           }}
           data={JobList}
+          keyExtractor={(item, index) => item.JobId ?? String(index)}
           renderItem={({ item, index }) => (
             <JobCard item={item} index={index} />
           )}

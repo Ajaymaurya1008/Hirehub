@@ -1,5 +1,5 @@
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Category from "../../components/HomeScreen/Category";
 import {
   collection,
@@ -20,9 +20,11 @@ export default function explore() {
     useState<QueryDocumentSnapshot<DocumentData, DocumentData>>();
   const [loading, setLoading] = useState(false);
   const [moreData, setMoreData] = useState(true);
+  const fetching = useRef(false);
 
   const getAllJobs = async () => {
-    if (loading || !moreData) return;
+    if (fetching.current || !moreData) return;
+    fetching.current = true;
 
     setLoading(true);
     try {
@@ -37,13 +39,17 @@ export default function explore() {
         list.push({ JobId: doc.id, ...doc.data() } as JobType);
       });
 
-      setAllJobs((prevJobs) => [...prevJobs, ...list]);
+      setAllJobs((prevJobs) => {
+        const seen = new Set(prevJobs.map((job) => job.JobId));
+        return [...prevJobs, ...list.filter((job) => !seen.has(job.JobId))];
+      });
       setLastDoc(querySnapshot.docs[querySnapshot.docs.length - 1]);
       setMoreData(querySnapshot.docs.length > 0);
     } catch (error) {
       console.log(error);
     }
     setLoading(false);
+    fetching.current = false;
   };
 
   useEffect(() => {
@@ -76,7 +82,7 @@ export default function explore() {
         style={{ flex: 1, paddingHorizontal: 20 }}
         horizontal={false}
         data={allJobs}
-        keyExtractor={(item) => item.Id}
+        keyExtractor={(item) => item.JobId}
         renderItem={({ item, index }) => <JobCard index={index} item={item} />}
         onEndReached={getAllJobs}
         onEndReachedThreshold={0.5}

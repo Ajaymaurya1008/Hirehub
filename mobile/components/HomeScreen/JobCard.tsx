@@ -20,7 +20,7 @@ export default function JobCard({
 
   return (
     <TouchableOpacity
-      onPress={() => router.push(`JobDetail/${item.JobId}`)}
+      onPress={() => router.push(`/JobDetail/${item.JobId}`)}
       style={{
         display: "flex",
         flexDirection: "column",
